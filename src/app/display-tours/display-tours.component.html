@@ -1,0 +1,21 @@
+<!-- <p>display-tours works!</p> -->
+<div class="main">
+    <!-- <h1>List of Tours</h1> -->
+<div class="content" *ngIf="tours; else noTours">
+
+ <div class="items" *ngFor="let tour of tours">
+   <p>Tour:{{ tour.Tourname }}</p>
+   <p><img src="{{ tour.Tourimage }}" /></p>
+   <p>Description:{{ tour.TDescription }}</p>
+   <p>Destination:{{ tour.TDestination }}</p>
+   <p>Price:{{ tour.TPrice | currency:"KSH "}}</p>
+   <button (click)="book(tour.Id)">BOOK NOW</button>
+   <button *ngIf="role === 'ADMIN'" (click)="editTour(tour.Id)">Edit</button>
+     <button *ngIf="role === 'ADMIN'" (click)="deleteTour(tour.Id)">Delete</button>
+ </div>
+</div>
+<ng-template #noTours>
+ <i> List empty Kindly Add a Tour!!!</i>
+</ng-template>
+</div>
+
